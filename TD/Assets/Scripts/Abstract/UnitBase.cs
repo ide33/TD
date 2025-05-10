@@ -3,11 +3,14 @@ using UnityEngine;
 // このクラスは直接使えない
 public abstract class UnitBase : MonoBehaviour, IUnit
 {
-    [SerializeField] protected int maxHP = 100;  // 自分自身、継承先だけアクセス可能
+    // 自分自身、継承先だけアクセス可能
+    [SerializeField] protected int maxHP = 100;
 
-    protected int currentHP;  // 継承先で参照可能、現在のHP
+    // 継承先で参照可能、現在のHP
+    protected int currentHP;
 
-    public virtual void Start()  // 継承先で上書き(override)可能
+    // 継承先で上書き(override)可能
+    public virtual void Start()
     {
         currentHP = maxHP;
     }

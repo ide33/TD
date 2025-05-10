@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class Enemy : UnitBase
 {
-    [SerializeField] private float moveSpeed = 1.0f;  // 移動速度
+    // 移動速度
+    [SerializeField] private float moveSpeed = 1.0f;
 
     private IEnemyUnit currentState;
 
-    public float MoveSpeed { get { return moveSpeed; } }  // 読み取り専用プロパティ
+    // 読み取り専用プロパティ
+    public float MoveSpeed { get { return moveSpeed; } }
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
 
     public override void Start()
     {
-        base.Start();  // HP初期化
+        // HP初期化
+        base.Start();
 
-        ChangeState(new EnemyMoveState());  // 最初は移動状態
+        // 最初は移動状態
+        ChangeState(new EnemyMoveState());
     }
 
     public void ChangeState(IEnemyUnit newState)
