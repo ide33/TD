@@ -9,9 +9,10 @@ public class AllyIdleState : IAllyUnit
 
     public void UpdateState(Ally ally)
     {
+        // 敵が近づいたら攻撃状態に
         if (ally.IsEnemyInRange())
         {
-            ally.ChangeState(new AllyAttackState());  // 敵が近づいたら攻撃状態に
+            ally.ChangeState(new AllyAttackState());
         }
     }
 

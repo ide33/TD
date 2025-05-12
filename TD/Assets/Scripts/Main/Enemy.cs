@@ -5,10 +5,25 @@ public class Enemy : UnitBase
     // 移動速度
     [SerializeField] private float moveSpeed = 1.0f;
 
+    // 攻撃範囲
+    [SerializeField] private float attackRange = 0.5f;
+
+    // 攻撃位置
+    [SerializeField] private Transform attackPoint;
+
+    // 最新の状態
     private IEnemyUnit currentState;
 
     // 読み取り専用プロパティ
     public float MoveSpeed { get { return moveSpeed; } }
+
+    // attackRange取得用プロパティ
+    public float AttackRange
+    { get { return attackRange; } }
+
+    // 攻撃位置
+    public Transform AttackPoint
+    { get { return attackPoint; } }
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
 
@@ -46,6 +61,14 @@ public class Enemy : UnitBase
         {
             currentState.UpdateState(this);
         }
+    }
+
+    public bool IsAllyInRange()
+    {
+        // Enemyの敵が範囲内にいるか調べる
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Ally"));
+
+        return hit != null;
     }
 
     // ユニットが死亡したときに呼ばれる処理
