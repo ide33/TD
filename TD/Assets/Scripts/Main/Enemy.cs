@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Enemy : UnitBase
 {
-    // 移動速度
-    [SerializeField] private float moveSpeed = 1.0f;
-
-    // 攻撃範囲
-    [SerializeField] private float attackRange = 0.5f;
+    // キャラデータの取得
+    [SerializeField] private EnemyData data;
 
     // 攻撃位置
     [SerializeField] private Transform attackPoint;
@@ -14,12 +11,11 @@ public class Enemy : UnitBase
     // 最新の状態
     private IEnemyUnit currentState;
 
-    // 読み取り専用プロパティ
-    public float MoveSpeed { get { return moveSpeed; } }
+    // Enemy固有ステータス
+    public int WGT { get; private set;}
+    public float MOV { get; private set;}
+    public float attackRange { get; private set;}
 
-    // attackRange取得用プロパティ
-    public float AttackRange
-    { get { return attackRange; } }
 
     // 攻撃位置
     public Transform AttackPoint
@@ -29,6 +25,16 @@ public class Enemy : UnitBase
 
     public override void Start()
     {
+        // ステータスの初期化
+        maxHP = data.maxHP;
+        STR = data.STR;
+        DEF = data.DEF;
+        INT = data.INT;
+        RES = data.RES;
+        WGT = data.WGT;
+        MOV = data.MOV;
+        attackRange = data.attackRange;
+
         // HP初期化
         base.Start();
 

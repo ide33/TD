@@ -1,25 +1,41 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 
-public class Ally : MonoBehaviour
+public class Ally : UnitBase
 {
-    // 攻撃範囲
-    [SerializeField] private float attackRange = 1.0f;
+    // キャラデータの取得
+    [SerializeField] private AllyData data;
 
     // 最新の状態
     private IAllyUnit currentState;
 
-    // attackRange取得用プロパティ
-    public float AttackRange
-    { get { return attackRange; } }
+    // Ally固有ステータス
+    public int BLK { get; private set;}
+    public float SP { get; private set;}
+    public float attackRange { get; private set;}
+
 
     // 攻撃位置
     public Transform AttackPoint
     { get { return transform; } }
 
-    private void Start()
+    public override void Start()
     {
-        //最初は待機状態
+        // ステータスの初期化
+        maxHP = data.maxHP;
+        STR = data.STR;
+        DEF = data.DEF;
+        INT = data.INT;
+        RES = data.RES;
+        BLK = data.BLK;
+        SP = data.SP;
+        attackRange = data.attackRange;
+
+        // HP初期化
+        base.Start();
+
+        // 最初は移動状態
         ChangeState(new AllyIdleState());
     }
 

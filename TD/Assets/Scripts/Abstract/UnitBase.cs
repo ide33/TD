@@ -9,6 +9,13 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     // 継承先で参照可能、現在のHP
     protected int currentHP;
 
+    // ユニットデータ
+    public int STR;
+    public int DEF;
+    public int INT;
+    public int RES;
+
+
     // 継承先で上書き(override)可能
     public virtual void Start()
     {
