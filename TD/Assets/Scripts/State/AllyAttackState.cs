@@ -37,7 +37,7 @@ public class AllyAttackState : IAllyUnit
 
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(20);
+                    ally.attackStrategy.Attack(ally, enemy);
                 }
 
                 // タイマーをリセット

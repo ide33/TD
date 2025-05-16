@@ -10,7 +10,7 @@ public class EnemyMoveState : IEnemyUnit
     public void UpdateState(Enemy enemy)
     {
         // 移動処理
-        enemy.transform.Translate(enemy.MoveDirection * enemy.MoveSpeed * Time.deltaTime);
+        enemy.transform.Translate(enemy.MoveDirection * enemy.MOV * Time.deltaTime);
 
         // 味方が近づいたら攻撃状態に
         if (enemy.IsAllyInRange())

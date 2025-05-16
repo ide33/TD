@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: AllyData
   m_EditorClassIdentifier: 
   characterName: 
-  maxHP: 0
-  STR: 0
+  maxHP: 100
+  STR: 30
   DEF: 0
   INT: 0
   RES: 0
+  attackType: 0
   BLK: 0
   SP: 0
-  attackRange: 0
+  attackRange: 1

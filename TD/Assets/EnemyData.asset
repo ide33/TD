@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   characterName: 
-  maxHP: 0
-  STR: 0
+  maxHP: 100
+  STR: 30
   DEF: 0
   INT: 0
   RES: 0
   WGT: 0
-  MOV: 0
-  attackRange: 0
+  MOV: 2
+  attackRange: 0.5

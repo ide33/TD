@@ -10,10 +10,13 @@ public class Ally : UnitBase
     // 最新の状態
     private IAllyUnit currentState;
 
+    // 攻撃方法
+    public IAttackStrategy attackStrategy;
+
     // Ally固有ステータス
-    public int BLK { get; private set;}
-    public float SP { get; private set;}
-    public float attackRange { get; private set;}
+    public int BLK { get; private set; }
+    public float SP { get; private set; }
+    public float attackRange { get; private set; }
 
 
     // 攻撃位置
@@ -31,6 +34,25 @@ public class Ally : UnitBase
         BLK = data.BLK;
         SP = data.SP;
         attackRange = data.attackRange;
+
+        // キャラに応じて攻撃方法を変える
+        switch (data.attackType)
+        {
+            // 近接
+            case AllyData.AttackType.Melee:
+                attackStrategy = new MeleeAttack();
+                break;
+
+            // 遠距離
+            case AllyData.AttackType.Ranged:
+                attackStrategy = new RangedAttack();
+                break;
+
+            // 術
+            case AllyData.AttackType.Magic:
+                attackStrategy = new MagicAttack();
+                break;
+        }
 
         // HP初期化
         base.Start();

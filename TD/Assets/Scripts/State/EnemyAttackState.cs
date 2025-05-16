@@ -26,7 +26,7 @@ public class EnemyAttackState : IEnemyUnit
         if (timer <= 0f)
         {
             // 範囲内の敵を検出
-            Collider2D hit = Physics2D.OverlapCircle(enemy.AttackPoint.position, enemy.AttackRange, LayerMask.GetMask("Ally"));
+            Collider2D hit = Physics2D.OverlapCircle(enemy.AttackPoint.position, enemy.attackRange, LayerMask.GetMask("Ally"));
 
 
             if (hit != null)

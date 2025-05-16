@@ -24,7 +24,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
 
     public virtual void TakeDamage(int damage)
     {
-        currentHP -= damage;  //HPをダメージ分減らす
+        //HPをダメージ分減らす
+        currentHP -= damage;
 
         Debug.Log($"{gameObject.name}は{damage}ダメージを受けた");
 

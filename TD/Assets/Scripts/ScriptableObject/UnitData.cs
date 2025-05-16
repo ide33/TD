@@ -14,9 +14,9 @@ public class UnitData : ScriptableObject
     // 防御力
     public int DEF;
 
-    // 魔法攻撃力
+    // 術攻撃力
     public int INT;
 
-    // 魔法防御力
+    // 術防御力
     public int RES;
 }
