@@ -82,6 +82,12 @@ public class Enemy : UnitBase
     {
         base.Die();
 
+        if (this is Enemy)
+        {
+            // 死亡時にカウント
+            GameManager.Instance.EnemyDefeated();
+        }
+
         // 死亡状態に切り替え
         // ChangeState(new EnemyDeadState());
     }

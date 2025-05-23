@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c38984d5fb4243c4e83419d23ebeb21e, type: 3}
-  m_Name: EnemyData
+  m_Script: {fileID: 11500000, guid: c70f55891b36bee4aa814acdb3f06be4, type: 3}
+  m_Name: DeployableUnit
   m_EditorClassIdentifier: 
-  characterName: 
-  maxHP: 100
-  STR: 30
-  DEF: 0
-  INT: 0
-  RES: 0
-  WGT: 0
-  MOV: 2
-  attackRange: 1
+  unitName: 
+  icon: {fileID: 0}
+  unitPrefab: {fileID: 7528820620855853962, guid: 15ba5c6173a7a2f419c34ec091abb35e, type: 3}
+  cost: 5

@@ -21,4 +21,4 @@ MonoBehaviour:
   attackType: 0
   BLK: 0
   SP: 0
-  attackRange: 1
+  attackRange: 0
