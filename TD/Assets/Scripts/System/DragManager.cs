@@ -22,15 +22,20 @@ public class DragManager : MonoBehaviour
         Instance = this;
     }
 
-    public void BeginDrag(DeployableUnitData data)
+    public void BeginDrag(GameObject allyPrefab)
     {
-        if (!CostManager.Instance.TrySpendCost(data.cost))
+        // コストをAllyDataから取得
+        int cost = allyPrefab.GetComponent<Ally>().CST;
+
+        if (!CostManager.Instance.TrySpendCost(cost))
         {
             Debug.Log("コストが足りません");
+            return;
         }
+
         // ユニットプレハブを仮生成、ゴーストとする
-        draggingData = data;
-        ghost = Instantiate(data.unitPrefab);
+        // draggingData = data;
+        ghost = Instantiate(allyPrefab);
 
         // 半透明
         ghost.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
@@ -57,7 +62,7 @@ public class DragManager : MonoBehaviour
             if (hit.collider != null)
             {
                 // 実体を配置
-                Instantiate(draggingData.unitPrefab, ghost.transform.position, Quaternion.identity);
+                Instantiate(draggingData.prefab, ghost.transform.position, Quaternion.identity);
             }
 
             // ゴーストを削除

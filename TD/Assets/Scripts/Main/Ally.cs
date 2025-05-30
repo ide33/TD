@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
@@ -7,6 +8,9 @@ public class Ally : UnitBase
     // キャラデータの取得
     [SerializeField] private AllyData data;
 
+    [SerializeField, Tooltip("このユニットの配置コスト（AllyDataから取得）")]
+    private int cost;
+
     // 最新の状態
     private IAllyUnit currentState;
 
@@ -15,8 +19,10 @@ public class Ally : UnitBase
 
     // Ally固有ステータス
     public int BLK { get; private set; }
+    // public int CST { get; private set; }
     public float SP { get; private set; }
     public float attackRange { get; private set; }
+    public int CST => cost;
 
 
     // 攻撃位置
@@ -25,6 +31,13 @@ public class Ally : UnitBase
 
     public override void Start()
     {
+        if (!CostManager.Instance.TrySpendCost(CST))
+        {
+            Debug.Log("ユニットを配置できません。");
+            Destroy(gameObject);
+            return;
+        }
+
         // ステータスの初期化
         maxHP = data.maxHP;
         STR = data.STR;
@@ -32,6 +45,7 @@ public class Ally : UnitBase
         INT = data.INT;
         RES = data.RES;
         BLK = data.BLK;
+        // CST = data.CST;
         SP = data.SP;
         attackRange = data.attackRange;
 

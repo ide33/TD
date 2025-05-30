@@ -9,6 +9,9 @@ public class AllyData : UnitData
 
     // ブロック数
     public int BLK;
+    
+    // コスト
+    public int cost;
 
     // スキルポイント
     public float SP;
