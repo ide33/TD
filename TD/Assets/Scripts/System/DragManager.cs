@@ -52,7 +52,7 @@ public class DragManager : MonoBehaviour
             ghost.transform.position = worldPos;
         }
     }
-
+    
     public void EndDrag()
     {
         if (ghost != null)
