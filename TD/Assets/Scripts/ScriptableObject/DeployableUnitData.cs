@@ -10,7 +10,7 @@ public class DeployableUnitData : ScriptableObject
     public Sprite icon;
 
     // ユニットのプレハブ
-    public GameObject prefab;
+    public GameObject unitprefab;
 
     // // 配置コスト
     // public int cost;

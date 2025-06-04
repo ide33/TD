@@ -20,7 +20,7 @@ public class UnitIconUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         // ドラッグを開始
-        DragManager.Instance.BeginDrag(unitData.prefab);
+        DragManager.Instance.BeginDrag(unitData);
     }
 
     public void OnDrag(PointerEventData eventData)
