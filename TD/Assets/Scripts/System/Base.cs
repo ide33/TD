@@ -15,6 +15,8 @@ public class Base : MonoBehaviour
             // 自陣にダメージを与えて敵を破壊
             TakeDamage(1);
             Destroy(other.gameObject);
+
+            Debug.Log("自陣の耐久値が1減少");
         }
     }
 }

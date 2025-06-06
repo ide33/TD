@@ -9,7 +9,6 @@ public class Ally : UnitBase
     [SerializeField] private AllyData data;
 
     [SerializeField, Tooltip("このユニットの配置コスト（AllyDataから取得）")]
-    // private int cost;
 
     // 最新の状態
     private IAllyUnit currentState;
@@ -22,7 +21,7 @@ public class Ally : UnitBase
     // public int CST { get; private set; }
     public float SP { get; private set; }
     public float attackRange { get; private set; }
-    public int CST { get; private set; }
+    // public int CST { get; private set; }
 
     // 攻撃位置
     public Transform AttackPoint
@@ -30,12 +29,12 @@ public class Ally : UnitBase
 
     public override void Start()
     {
-        if (!CostManager.Instance.TrySpendCost(CST))
-        {
-            Debug.Log("ユニットを配置できません。");
-            Destroy(gameObject);
-            return;
-        }
+        // if (!CostManager.Instance.TrySpendCost(CST))
+        // {
+        //     Debug.Log("ユニットを配置できません。");
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
         // ステータスの初期化
         maxHP = data.maxHP;
@@ -44,7 +43,7 @@ public class Ally : UnitBase
         INT = data.INT;
         RES = data.RES;
         BLK = data.BLK;
-        CST = data.CST;
+        // CST = data.CST;
         SP = data.SP;
         attackRange = data.attackRange;
 

@@ -11,7 +11,7 @@ public class AllyData : UnitData
     public int BLK;
     
     // コスト
-    public int CST;
+    // public int CST;
 
     // スキルポイント
     public float SP;

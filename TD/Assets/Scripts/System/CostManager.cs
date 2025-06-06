@@ -59,8 +59,6 @@ public class CostManager : MonoBehaviour
 
             // 使用した分減少
             costAccumulator -= regenAmount;
-
-            Debug.Log($"コスト回復：+{regenAmount} 現在のコスト: {CurrentCost}");
         }
     }
 
