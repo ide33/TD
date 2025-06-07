@@ -29,13 +29,6 @@ public class Ally : UnitBase
 
     public override void Start()
     {
-        // if (!CostManager.Instance.TrySpendCost(CST))
-        // {
-        //     Debug.Log("ユニットを配置できません。");
-        //     Destroy(gameObject);
-        //     return;
-        // }
-
         // ステータスの初期化
         maxHP = data.maxHP;
         STR = data.STR;
@@ -43,7 +36,6 @@ public class Ally : UnitBase
         INT = data.INT;
         RES = data.RES;
         BLK = data.BLK;
-        // CST = data.CST;
         SP = data.SP;
         attackRange = data.attackRange;
 
@@ -60,7 +52,7 @@ public class Ally : UnitBase
                 attackStrategy = new RangedAttack();
                 break;
 
-            // 術
+            // 魔法
             case AllyData.AttackType.Magic:
                 attackStrategy = new MagicAttack();
                 break;
