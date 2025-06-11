@@ -20,6 +20,5 @@ MonoBehaviour:
   RES: 0
   attackType: 0
   BLK: 0
-  CST: 5
   SP: 0
-  attackRange: 0
+  attackRange: 1.5
