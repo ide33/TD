@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DeployableUnit
   m_EditorClassIdentifier: 
   unitName: 
-  icon: {fileID: 0}
+  icon: {fileID: -7497731981583366491, guid: 4c07e8fd40c840e4cb5e376166ed5eee, type: 3}
   unitprefab: {fileID: 7528820620855853962, guid: 15ba5c6173a7a2f419c34ec091abb35e, type: 3}
   ghostprefab: {fileID: 3296773989514394122, guid: 069befedca412f340be8c704725083ec, type: 3}
   cost: 5
