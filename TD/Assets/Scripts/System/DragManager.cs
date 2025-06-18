@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class DragManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class DragManager : MonoBehaviour
 
     // ドラッグ中のユニットデータ
     private DeployableUnitData draggingData;
+
+    public Tilemap tilemap;
 
     private void Awake()
     {
@@ -41,8 +44,11 @@ public class DragManager : MonoBehaviour
         if (ghost != null)
         {
             // マウス座標をワールド座標に変換、ゴーストを追従
-            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            ghost.transform.position = worldPos;
+            // Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int cellPos = tilemap.WorldToCell(worldPos);
+            ghost.transform.position = tilemap.GetCellCenterWorld(cellPos);
         }
     }
 
@@ -52,18 +58,22 @@ public class DragManager : MonoBehaviour
         {
             // 今後タイルマップ準拠に修正
             // 配置可能エリアを検出
-            Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 1f, LayerMask.GetMask("DeployArea"));
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int cellPos = tilemap.WorldToCell(worldPos);
+            Vector3 snappedPos = tilemap.GetCellCenterWorld(cellPos);
+            // RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 1f, LayerMask.GetMask("DeployArea"));
 
-            if (hit.collider != null)
+            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("Ally"));
+
+            if (hit != null)
             {
-                DeployArea area = hit.collider.GetComponent<DeployArea>();
+                DeployArea area = hit.GetComponent<DeployArea>();
 
                 if (area != null && !area.isOccupied)
                 {
                     // 配置
-                    Vector3 placePosiotion = hit.collider.transform.position;
-                    if (TryPlaceUnit(placePosiotion))
+                    // Vector3 placePosiotion = hit.transform.position;
+                    if (TryPlaceUnit(snappedPos))
                     {
                         area.isOccupied = true;
                     }

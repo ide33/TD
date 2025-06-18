@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Enemy : UnitBase
 {
@@ -22,6 +23,7 @@ public class Enemy : UnitBase
     { get { return attackPoint; } }
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
+    public Tilemap tilemap;
 
     public override void Start()
     {
