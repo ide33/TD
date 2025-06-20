@@ -44,7 +44,6 @@ public class DragManager : MonoBehaviour
         if (ghost != null)
         {
             // マウス座標をワールド座標に変換、ゴーストを追従
-            // Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cellPos = tilemap.WorldToCell(worldPos);
@@ -58,12 +57,12 @@ public class DragManager : MonoBehaviour
         {
             // 今後タイルマップ準拠に修正
             // 配置可能エリアを検出
+
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cellPos = tilemap.WorldToCell(worldPos);
             Vector3 snappedPos = tilemap.GetCellCenterWorld(cellPos);
-            // RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 1f, LayerMask.GetMask("DeployArea"));
-
-            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("Ally"));
+           
+            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("DeployArea"));
 
             if (hit != null)
             {
@@ -72,7 +71,6 @@ public class DragManager : MonoBehaviour
                 if (area != null && !area.isOccupied)
                 {
                     // 配置
-                    // Vector3 placePosiotion = hit.transform.position;
                     if (TryPlaceUnit(snappedPos))
                     {
                         area.isOccupied = true;
