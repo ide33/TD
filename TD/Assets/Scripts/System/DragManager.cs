@@ -62,18 +62,18 @@ public class DragManager : MonoBehaviour
             Vector3Int cellPos = tilemap.WorldToCell(worldPos);
             Vector3 snappedPos = tilemap.GetCellCenterWorld(cellPos);
            
-            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("DeployArea"));
+            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("DeployArea", "DeployHigh"));
 
             if (hit != null)
             {
-                DeployArea area = hit.GetComponent<DeployArea>();
+                IDeployArea area = hit.GetComponent<IDeployArea>();
 
-                if (area != null && !area.isOccupied)
+                if (area != null && !area.IsOccupied && area.CanDeploy(draggingData))
                 {
                     // 配置
                     if (TryPlaceUnit(snappedPos))
                     {
-                        area.isOccupied = true;
+                        area.IsOccupied = true;
                     }
                 }
                 else
