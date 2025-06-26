@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 // このクラスは直接使えない
 public abstract class UnitBase : MonoBehaviour, IUnit
@@ -14,6 +15,9 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public int DEF;
     public int INT;
     public int RES;
+
+    public List<Vector3> movePath;
+    public int currentPathIndex;
 
 
     // 継承先で上書き(override)可能

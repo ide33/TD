@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,9 +8,30 @@ public class EnemyMoveState : IEnemyUnit
     private Vector3 targetPosition;
     private bool hasTarget;
 
+    public List<Vector3Int> movePath;
+    public int currentPathIndex = 0;
+
     public void EnterState(Enemy enemy)
     {
         Debug.Log($"{enemy.name}が移動状態に入った");
+
+        // PathFinderからルートを取得
+        List<Vector3Int> cellPath = PathFinder.Instance.FindPath(enemy.spawnCell, enemy.goalCell);
+
+        if (cellPath == null || cellPath.Count == 0)
+        {
+            Debug.Log("経路が見つからなかった");
+            return;
+        }
+
+        enemy.movePath = new List<Vector3>();
+        foreach (var cell in cellPath)
+        {
+            enemy.movePath.Add(enemy.tilemap.GetCellCenterWorld(cell));
+        }
+
+        enemy.currentPathIndex = 0;
+
         SetNextTarget(enemy);
     }
 
@@ -17,6 +39,16 @@ public class EnemyMoveState : IEnemyUnit
     {
         // 移動処理
         // enemy.transform.Translate(enemy.MoveDirection * enemy.MOV * Time.deltaTime);
+
+        if (enemy.movePath == null || enemy.currentPathIndex >= enemy.movePath.Count) return;
+
+        Vector3 target = enemy.movePath[enemy.currentPathIndex];
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target, enemy.MOV * Time.deltaTime);
+
+        if (Vector3.Distance(enemy.transform.position, target) < 0.01f)
+        {
+            enemy.currentPathIndex++;
+        }
 
 
         if (!hasTarget)

@@ -25,6 +25,9 @@ public class Enemy : UnitBase
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
     public Tilemap tilemap;
 
+    public Vector3Int spawnCell;
+    public Vector3Int goalCell;
+
     public override void Start()
     {
         // ステータスの初期化
