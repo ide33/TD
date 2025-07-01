@@ -7,8 +7,11 @@ public class MapManager : MonoBehaviour
     // MaooMAnagerのシングルトン
     public static MapManager Instance { get; private set; }
 
+    // タイルマップ
     public Tilemap tilemap;
-    private Dictionary<Vector3Int, AreaType> areaMap = new Dictionary<Vector3Int, AreaType>();
+
+    // タイルを保持する辞書
+    public Dictionary<Vector3Int, AreaType> areaMap = new Dictionary<Vector3Int, AreaType>();
 
     // 配置可能エリア
     public enum AreaType
@@ -40,7 +43,7 @@ public class MapManager : MonoBehaviour
             {
                 Vector3Int pos = new Vector3Int(x, y, 0);
 
-                // HighGroundArea
+                // 高台
                 if ((x == -10 && y == -3) || (x == -9 && y == -3) || (x == -8 && y == -3) ||  (x == -7 && y == -3) || (x == -6 && y == -3) || (x == -5 && y == -3) || (x == -4 && y == -3) || (x == -3 && y == -3) || (x == -2 && y == -3) || (x == -1 && y == -3) || (x == 0 && y == -3) || (x == 1 && y == -3) || (x == 2 && y == -3) || (x == 3 && y == -3) || (x == 4 && y == -3) || (x == 5 && y == -3) || (x == 6 && y == -3) || (x == 7 && y == -3) || (x == 8 && y == -3) ||(x == 9 && y == -3) ||  // 下側の高台
                 (x == -10 && y == -4) || (x == -9 && y == -4) || (x == -8 && y == -4) ||  (x == -7 && y == -4) || (x == -6 && y == -4) || (x == -5 && y == -4) || (x == -4 && y == -4) || (x == -3 && y == -4) || (x == -2 && y == -4) || (x == -1 && y == -4) || (x == 0 && y == -4) || (x == 1 && y == -4) || (x == 2 && y == -4) || (x == 3 && y == -4) || (x == 4 && y == -4) || (x == 5 && y == -4) || (x == 6 && y == -4) || (x == 7 && y == -4) || (x == 8 && y == -4) ||(x == 9 && y == -4) ||
                 (x == -9 && y == 3) || (x == -8 && y == 3) ||  (x == -7 && y == 3) || (x == -6 && y == 3) || (x == -5 && y == 3) || (x == -4 && y == 3) || (x == -3 && y == 3) || (x == -2 && y == 3) || (x == -1 && y == 3) || (x == 0 && y == 3) || (x == 1 && y == 3) || (x == 2 && y == 3) || (x == 3 && y == 3) || (x == 4 && y == 3) || (x == 5 && y == 3) || (x == 6 && y == 3) || (x == 7 && y == 3) || (x == 8 && y == 3) ||  // 上側の高台
@@ -52,7 +55,7 @@ public class MapManager : MonoBehaviour
                     areaMap[pos] = AreaType.HighGroundArea;
                 }
 
-                // None
+                // 配置不可エリア
                 else if (y == -5 || y == 4 || x == -11 || x == 10  // 上下左右の端の配置不可エリア
                 || y == 3 && x == -10 || y == 2 && x == -10 || y == 1 && x == -10 || y == 0 && x == -10  // 左端の配置不可エリア
                 || y == 3 && x == 9 || y == 1 && x == 9 || y == 2 && x == 9 || y == 0 && x == 9)
@@ -60,7 +63,7 @@ public class MapManager : MonoBehaviour
                     areaMap[pos] = AreaType.None;
                 }
 
-                // DeployArea
+                // 地上
                 else
                 {
                     areaMap[pos] = AreaType.DeployArea;
@@ -71,12 +74,15 @@ public class MapManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // ゲーム実行中は描画しない
         if (areaMap == null) return;
 
+        // 各マスの中央座標取得
         foreach (var kvp in areaMap)
         {
             Vector3 worldPos = tilemap.GetCellCenterWorld(kvp.Key);
 
+            // マスのタイプに応じてGizumoの色を変更
             switch (kvp.Value)
             {
                 case AreaType.DeployArea:

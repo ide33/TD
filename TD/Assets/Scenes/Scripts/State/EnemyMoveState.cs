@@ -6,7 +6,7 @@ public class EnemyMoveState : IEnemyUnit
 {
 
     private Vector3 targetPosition;
-    private bool hasTarget;
+    // private bool hasTarget;
 
     public List<Vector3Int> movePath;
     public int currentPathIndex = 0;
@@ -32,7 +32,7 @@ public class EnemyMoveState : IEnemyUnit
 
         enemy.currentPathIndex = 0;
 
-        SetNextTarget(enemy);
+        // SetNextTarget(enemy);
     }
 
     public void UpdateState(Enemy enemy)
@@ -43,6 +43,8 @@ public class EnemyMoveState : IEnemyUnit
         if (enemy.movePath == null || enemy.currentPathIndex >= enemy.movePath.Count) return;
 
         Vector3 target = enemy.movePath[enemy.currentPathIndex];
+
+        // 次のマスへ移動
         enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target, enemy.MOV * Time.deltaTime);
 
         if (Vector3.Distance(enemy.transform.position, target) < 0.01f)
@@ -51,17 +53,14 @@ public class EnemyMoveState : IEnemyUnit
         }
 
 
-        if (!hasTarget)
-        {
-            SetNextTarget(enemy);
-        }
-
-        // 次のマスへ移動
-        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, targetPosition, enemy.MOV * Time.deltaTime);
+        // if (!hasTarget)
+        // {
+        //     SetNextTarget(enemy);
+        // }
 
         if (Vector3.Distance(enemy.transform.position, targetPosition) < 0.01f)
         {
-            hasTarget = false;
+            enemy.currentPathIndex++;
         }
 
         // 味方が近づいたら攻撃状態に
@@ -69,21 +68,19 @@ public class EnemyMoveState : IEnemyUnit
         {
             enemy.ChangeState(new EnemyAttackState());
         }
-
-        // ToDo: 「タイルの端についたら止まる　or 切り返す」などを追加
     }
 
-    public void SetNextTarget(Enemy enemy)
-    {
-        Tilemap tilemap = enemy.tilemap;
-        Vector3 currentPos = enemy.transform.position;
-        Vector3Int currentCell = tilemap.WorldToCell(currentPos);
+    // public void SetNextTarget(Enemy enemy)
+    // {
+    //     Tilemap tilemap = enemy.tilemap;
+    //     Vector3 currentPos = enemy.transform.position;
+    //     Vector3Int currentCell = tilemap.WorldToCell(currentPos);
 
-        // 1マス左へ
-        Vector3Int nextCell = new Vector3Int(currentCell.x - 1, currentCell.y, currentCell.z);
-        targetPosition = tilemap.GetCellCenterWorld(nextCell);
-        hasTarget = true;
-    }
+    //     // 1マス左へ
+    //     Vector3Int nextCell = new Vector3Int(currentCell.x - 1, currentCell.y, currentCell.z);
+    //     targetPosition = tilemap.GetCellCenterWorld(nextCell);
+    //     hasTarget = true;
+    // }
 
     public void ExitState(Enemy enemy)
     {
