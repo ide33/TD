@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Unit", menuName = "DeployableUnit")]
@@ -20,4 +21,6 @@ public class DeployableUnitData : ScriptableObject
 
     // AllyDataのコストにアクセス
     public AllyData allyData;
+
+    public UnitType unitType;
 }

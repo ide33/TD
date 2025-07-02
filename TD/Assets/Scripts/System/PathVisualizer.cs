@@ -32,7 +32,7 @@ public class PathVisualizer : MonoBehaviour
         // 各点をワールド座標に変換して描画
         for (int i = 0; i < path.Count; i++)
         {
-            Vector3 worldPos = MapManager.Instance.tilemap.GetCellCenterWorld(path[i]);
+            Vector3 worldPos = MapManager.Instance.mainTilemap.GetCellCenterWorld(path[i]);
             line.SetPosition(i, worldPos + Vector3.back * 0.1f);
         }
     }

@@ -94,18 +94,28 @@ public class DragManager : MonoBehaviour
         // コストをDeployableUnitDataから取得
         int cost = draggingData.cost;
 
-        if (CostManager.Instance.TrySpendCost(cost))
+        if (!CostManager.Instance.TrySpendCost(cost))
+        {
+            Debug.Log("ユニット配置不可");
+            return false;
+        }
+
+        // 配置マスのセルを取得
+        Vector3Int cell = tilemap.WorldToCell(position);
+
+        // 配置可能かチェック
+        if (!MapManager.Instance.CanPlaceUnit(cell, draggingData.unitType))
+        {
+            Debug.Log($"ユニットタイプ{draggingData.unitType}はこのエリアに配置できません");
+            return false;
+        }
+        else
         {
             // 実体を配置
             Instantiate(draggingData.unitprefab, position, Quaternion.identity);
             Debug.Log("ユニット配置");
 
             return true;
-        }
-        else
-        {
-            Debug.Log("ユニット配置不可");
-            return false;
         }
     }
 }

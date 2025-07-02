@@ -11,6 +11,9 @@ public class MapManager : MonoBehaviour
     [Header("Area Tilemaps")]
     public AreaTilemap[] areatilemaps;
 
+    // 経路探索や座標返還に使う共通マップ
+    public Tilemap mainTilemap;
+
     // タイルを保持する辞書
     public Dictionary<Vector3Int, AreaType> areaMap = new Dictionary<Vector3Int, AreaType>();
 
@@ -31,6 +34,17 @@ public class MapManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        // 最初の DeployArea タイルマップを代表マップとして使う
+        foreach (var areaTM in areatilemaps)
+        {
+            if (areaTM.areaType == AreaType.DeployArea)
+            {
+
+                mainTilemap = areaTM.tilemap;
+                break;
+            }
+        }
 
         InitializeAreaMap();
     }
@@ -85,6 +99,26 @@ public class MapManager : MonoBehaviour
         //         }
         //     }
         // }
+    }
+
+    public bool CanPlaceUnit(Vector3Int cell, UnitType unitType)
+    {
+        if (!areaMap.ContainsKey(cell)) return false;
+
+        AreaType area = areaMap[cell];
+
+        switch (unitType)
+        {
+            case UnitType.Melee:
+                return area == AreaType.DeployArea;
+
+            case UnitType.Ranged:
+            case UnitType.Magic:
+                return area == AreaType.HighGroundArea;
+
+            default:
+                return false;
+        }
     }
 
     private void OnDrawGizmos()

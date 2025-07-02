@@ -1142,7 +1142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544797c8ab9f49144b29f2ad1c2b6277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 638146252}
+  areatilemaps: []
+  mainTilemap: {fileID: 0}
 --- !u!4 &506597688
 Transform:
   m_ObjectHideFlags: 0
@@ -2695,6 +2696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1493473368344807376, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 638146252}
     - target: {fileID: 5344680442187626292, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.541466

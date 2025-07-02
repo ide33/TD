@@ -20,7 +20,7 @@ public class EnemyMoveState : IEnemyUnit
 
         Debug.Log($"spawnCell: {enemy.spawnCell}, goalCell: {enemy.goalCell}");
 
-        enemy.spawnCell = MapManager.Instance.tilemap.WorldToCell(enemy.transform.position);
+        enemy.spawnCell = MapManager.Instance.mainTilemap.WorldToCell(enemy.transform.position);
         enemy.goalCell = new Vector3Int(-10, -1, 0); // 青い三角のセル
 
         // PathFinderからルートを取得
