@@ -45,6 +45,9 @@ public class PathFinder : MonoBehaviour
 
     public List<Vector3Int> FindPath(Vector3Int start, Vector3Int goal)
     {
+        Debug.Log($"spawnCell:{startCell}, isDeployArea: {areaMap[startCell] == MapManager.AreaType.DeployArea}");
+        Debug.Log($"goalCell:{goalCell}, isDeployArea: {areaMap[goalCell] == MapManager.AreaType.DeployArea}");
+
         // 幅優先探索(BFS)用のキューと経路復元用の履歴辞書
         Queue<Vector3Int> queue = new Queue<Vector3Int>();
         Dictionary<Vector3Int, Vector3Int> cameFrom = new Dictionary<Vector3Int, Vector3Int>();

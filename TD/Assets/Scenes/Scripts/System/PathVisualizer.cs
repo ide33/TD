@@ -11,7 +11,15 @@ public class PathVisualizer : MonoBehaviour
     {
         // PathFinderからパスを取得、描画
         line = GetComponent<LineRenderer>();
-        DrawPath(PathFinder.Instance.currentPath);
+        
+        if (PathFinder.Instance != null && PathFinder.Instance.currentPath != null && PathFinder.Instance.currentPath.Count > 0)
+        {
+            DrawPath(PathFinder.Instance.currentPath);
+        }
+        else
+        {
+            Debug.Log("PathVisualizer: 経路が設定されていないため、描画をスキップします");
+        }
     }
 
     public void DrawPath(List<Vector3Int> path)

@@ -212,6 +212,10 @@ MonoBehaviour:
   DEF: 0
   INT: 0
   RES: 0
+  movePath: []
+  currentPathIndex: 0
   data: {fileID: 11400000, guid: 9756f04a940e1d745841c4992a830dbe, type: 2}
   attackPoint: {fileID: 2235470909202637957}
   tilemap: {fileID: 0}
+  spawnCell: {x: 9, y: -1, z: 0}
+  goalCell: {x: -10, y: -1, z: 0}

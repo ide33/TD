@@ -8,12 +8,20 @@ public class EnemyMoveState : IEnemyUnit
     private Vector3 targetPosition;
     // private bool hasTarget;
 
+    public Vector3Int spawnCell;
+    public Vector3Int goalCell;
+
     public List<Vector3Int> movePath;
     public int currentPathIndex = 0;
 
     public void EnterState(Enemy enemy)
     {
         Debug.Log($"{enemy.name}が移動状態に入った");
+
+        Debug.Log($"spawnCell: {enemy.spawnCell}, goalCell: {enemy.goalCell}");
+
+        enemy.spawnCell = MapManager.Instance.tilemap.WorldToCell(enemy.transform.position);
+        enemy.goalCell = new Vector3Int(-10, -1, 0); // 青い三角のセル
 
         // PathFinderからルートを取得
         List<Vector3Int> cellPath = PathFinder.Instance.FindPath(enemy.spawnCell, enemy.goalCell);
