@@ -61,13 +61,14 @@ public class DragManager : MonoBehaviour
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int cellPos = tilemap.WorldToCell(worldPos);
             Vector3 snappedPos = tilemap.GetCellCenterWorld(cellPos);
-           
+
             Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("DeployArea", "DeployHigh"));
 
             if (hit != null)
             {
                 IDeployArea area = hit.GetComponent<IDeployArea>();
 
+                // 配置されておらずかつ、ユニットタイプが配置可能なら
                 if (area != null && !area.IsOccupied && area.CanDeploy(draggingData))
                 {
                     // 配置
@@ -101,21 +102,21 @@ public class DragManager : MonoBehaviour
         }
 
         // 配置マスのセルを取得
-        Vector3Int cell = tilemap.WorldToCell(position);
+        // Vector3Int cell = tilemap.WorldToCell(position);
 
-        // 配置可能かチェック
-        if (!MapManager.Instance.CanPlaceUnit(cell, draggingData.unitType))
-        {
-            Debug.Log($"ユニットタイプ{draggingData.unitType}はこのエリアに配置できません");
-            return false;
-        }
-        else
-        {
-            // 実体を配置
-            Instantiate(draggingData.unitprefab, position, Quaternion.identity);
-            Debug.Log("ユニット配置");
+        // // 配置可能かチェック
+        // if (!MapManager.Instance.CanPlaceUnit(cell, draggingData.unitType))
+        // {
+        //     Debug.Log($"ユニットタイプ{draggingData.unitType}はこのエリアに配置できません");
+        //     return false;
+        // }
+        // else
+        // {
+        // 実体を配置
+        Instantiate(draggingData.unitprefab, position, Quaternion.identity);
+        Debug.Log("ユニット配置");
 
-            return true;
-        }
+        return true;
+        // }
     }
 }

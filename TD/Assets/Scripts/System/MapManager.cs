@@ -40,7 +40,6 @@ public class MapManager : MonoBehaviour
         {
             if (areaTM.areaType == AreaType.DeployArea)
             {
-
                 mainTilemap = areaTM.tilemap;
                 break;
             }
@@ -59,6 +58,7 @@ public class MapManager : MonoBehaviour
             foreach (var cell in cells)
             {
                 areaMap[cell] = areaTM.areaType;
+                Debug.Log($"Registered cell {cell} as {areaTM.areaType}");
             }
         }
 
