@@ -62,24 +62,37 @@ public class DragManager : MonoBehaviour
             Vector3Int cellPos = tilemap.WorldToCell(worldPos);
             Vector3 snappedPos = tilemap.GetCellCenterWorld(cellPos);
 
-            Collider2D hit = Physics2D.OverlapPoint(snappedPos, LayerMask.GetMask("DeployArea", "DeployHigh"));
-
-            if (hit != null)
+            if (MapManager.Instance.areaMap.TryGetValue(cellPos, out MapManager.AreaType areaType))
             {
-                IDeployArea area = hit.GetComponent<IDeployArea>();
+                bool CanDeploy = false;
 
-                // 配置されておらずかつ、ユニットタイプが配置可能なら
-                if (area != null && !area.IsOccupied && area.CanDeploy(draggingData))
+                // ユニットのタイプに応じた配置可否判定
+                switch (draggingData.allyData.attackType)
                 {
-                    // 配置
+                    case AllyData.AttackType.Melee:
+                        CanDeploy = areaType == MapManager.AreaType.DeployArea;
+                        break;
+
+                    case AllyData.AttackType.Ranged:
+                    case AllyData.AttackType.Magic:
+                        CanDeploy = areaType == MapManager.AreaType.HighGroundArea;
+                        break;
+                }
+
+                if (CanDeploy)
+                {
                     if (TryPlaceUnit(snappedPos))
                     {
-                        area.IsOccupied = true;
+                        Debug.Log("ユニット配置成功");
+                    }
+                    else
+                    {
+                        Debug.Log("この場所には配置できません");
                     }
                 }
                 else
                 {
-                    Debug.Log("ユニット配置済み");
+                    Debug.Log("配置エリア外です");
                 }
             }
 
@@ -101,22 +114,10 @@ public class DragManager : MonoBehaviour
             return false;
         }
 
-        // 配置マスのセルを取得
-        // Vector3Int cell = tilemap.WorldToCell(position);
-
-        // // 配置可能かチェック
-        // if (!MapManager.Instance.CanPlaceUnit(cell, draggingData.unitType))
-        // {
-        //     Debug.Log($"ユニットタイプ{draggingData.unitType}はこのエリアに配置できません");
-        //     return false;
-        // }
-        // else
-        // {
         // 実体を配置
         Instantiate(draggingData.unitprefab, position, Quaternion.identity);
         Debug.Log("ユニット配置");
 
         return true;
-        // }
     }
 }

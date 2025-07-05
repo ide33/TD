@@ -100,13 +100,13 @@ public class EnemyMoveState : IEnemyUnit
         // Vector3 currentPos = enemy.transform.position;
         Vector3Int currentCell = tilemap.WorldToCell(enemy.transform.position);
 
-        // 1マス左へ
-        Vector3Int nextCell = new Vector3Int(currentCell.x - 1, currentCell.y, currentCell.z);
+        // 1マス進む
+        Vector3Int? nextCell = FindNextDeployCell(currentCell);
 
         // 次のセルがDeployAreaか確認
-        if (MapManager.Instance.areaMap.TryGetValue(nextCell, out MapManager.AreaType areaType) && areaType == MapManager.AreaType.DeployArea)
+        if (nextCell.HasValue)
         {
-            targetPosition = tilemap.GetCellCenterWorld(nextCell);
+            targetPosition = tilemap.GetCellCenterWorld(nextCell.Value);
             hasTarget = true;
         }
         else
@@ -114,6 +114,53 @@ public class EnemyMoveState : IEnemyUnit
             Debug.Log($"{enemy.name}は進行方向にDeployAreaがありませんでした");
             hasTarget = false;
         }
+    }
+
+    private Vector3Int? FindNextDeployCell(Vector3Int currentCell)
+    {
+        Vector3Int nextCell = new Vector3Int(currentCell.x - 1, currentCell.y, currentCell.z);
+
+        Debug.Log($"現在位置: {currentCell}, 次のセル: {nextCell}");
+
+        if (MapManager.Instance.areaMap.TryGetValue(nextCell, out MapManager.AreaType areaType))
+        {
+            Debug.Log($"次のセルのタイプ: {areaType}");
+
+            if (areaType == MapManager.AreaType.DeployArea)
+            {
+                return nextCell;
+            }
+            else
+            {
+                Debug.Log($"次のセルは DeployArea ではなく {areaType} でした");
+            }
+        }
+        else
+        {
+            Debug.Log($"次のセル {nextCell} は areaMap に存在しません");
+        }
+
+        return null;
+        //     Vector3Int[] directions = new[]
+        //     {
+        //     Vector3Int.left,
+        //     Vector3Int.down,
+        //     Vector3Int.up,
+        //     Vector3Int.right
+        // };
+
+        //     foreach (var dir in directions)
+        //     {
+        //         Vector3Int next = fromCell + dir;
+
+        //         if (MapManager.Instance.areaMap.TryGetValue(next, out var type)
+        //             && type == MapManager.AreaType.DeployArea)
+        //         {
+        //             return next;
+        //         }
+        //     }
+
+        //     return null;
     }
 
     public void ExitState(Enemy enemy)

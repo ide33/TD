@@ -18,3 +18,4 @@ MonoBehaviour:
   ghostprefab: {fileID: 3296773989514394122, guid: 069befedca412f340be8c704725083ec, type: 3}
   cost: 5
   allyData: {fileID: 11400000, guid: 9eaeb1cfb148a8d48a38c2a20c828303, type: 2}
+  unitType: 0
