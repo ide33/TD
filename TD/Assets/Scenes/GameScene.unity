@@ -2650,6 +2650,10 @@ PrefabInstance:
       value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 1493473368344807376, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
+      propertyPath: routeAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a283e5fa6210ea409765004e1b7cfb5, type: 2}
+    - target: {fileID: 1493473368344807376, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
       propertyPath: spawnCell.x
       value: 10
       objectReference: {fileID: 0}
@@ -2663,11 +2667,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5344680442187626292, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.434
+      value: 10.54
       objectReference: {fileID: 0}
     - target: {fileID: 5344680442187626292, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.501
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5344680442187626292, guid: 44e4c674ee22ce54f96d9a7ebd552fab, type: 3}
       propertyPath: m_LocalPosition.z

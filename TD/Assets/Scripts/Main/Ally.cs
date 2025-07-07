@@ -18,10 +18,8 @@ public class Ally : UnitBase
 
     // Ally固有ステータス
     public int BLK { get; private set; }
-    // public int CST { get; private set; }
     public float SP { get; private set; }
     public float attackRange { get; private set; }
-    // public int CST { get; private set; }
 
     // 攻撃位置
     public Transform AttackPoint

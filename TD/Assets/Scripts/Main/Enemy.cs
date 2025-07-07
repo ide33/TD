@@ -9,6 +9,9 @@ public class Enemy : UnitBase
     // 攻撃位置
     [SerializeField] private Transform attackPoint;
 
+    // ルートを取得
+    public EnemyRoute routeAsset;
+
     // 最新の状態
     private IEnemyUnit currentState;
 
