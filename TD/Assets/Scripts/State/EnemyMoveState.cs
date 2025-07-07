@@ -119,8 +119,27 @@ public class EnemyMoveState : IEnemyUnit
     private Vector3Int? FindNextDeployCell(Vector3Int currentCell)
     {
         Vector3Int nextCell = new Vector3Int(currentCell.x - 1, currentCell.y, currentCell.z);
+        Vector3Int lowerNextCell = new Vector3Int(nextCell.x, nextCell.y - 1, nextCell.z);
 
         Debug.Log($"現在位置: {currentCell}, 次のセル: {nextCell}");
+
+        if (MapManager.Instance.areaMap.TryGetValue(lowerNextCell, out MapManager.AreaType lowerAreaType))
+        {
+            Debug.Log($"次のセルのタイプ: {lowerAreaType}");
+
+            if (lowerAreaType == MapManager.AreaType.DeployArea)
+            {
+                return lowerNextCell;
+            }
+            // else
+            // {
+            //     Debug.Log($"次のセルは DeployArea ではなく {lowerAreaType} でした");
+            // }
+        }
+        // else
+        // {
+        //     Debug.Log($"次のセル {nextCell} は areaMap に存在しません");
+        // }
 
         if (MapManager.Instance.areaMap.TryGetValue(nextCell, out MapManager.AreaType areaType))
         {
@@ -132,14 +151,14 @@ public class EnemyMoveState : IEnemyUnit
             }
             else
             {
-                Debug.Log($"次のセルは DeployArea ではなく {areaType} でした");
+                Debug.Log($"次のセルはDeployAreaではなく{areaType}でした");
             }
         }
         else
         {
-            Debug.Log($"次のセル {nextCell} は areaMap に存在しません");
+            Debug.Log($"次のセル {nextCell} および下のセル {lowerNextCell} は areaMap に存在しません");
         }
-
+        
         return null;
         //     Vector3Int[] directions = new[]
         //     {

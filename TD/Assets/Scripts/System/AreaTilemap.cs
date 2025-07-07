@@ -15,7 +15,7 @@ public class AreaTilemap : MonoBehaviour
             {
                 MapManager.Instance.areaMap[pos] = areaType;
             }
-        }   
+        }
     }
 
     public List<Vector3Int> GetUsedCells()
@@ -31,11 +31,9 @@ public class AreaTilemap : MonoBehaviour
                 cells.Add(pos);
 
                 // もし2マスタイルなら、隣も登録
-                Vector3Int belowCell = new Vector3Int(pos.x, pos.y - 1, pos.z);
-                if (!tilemap.HasTile(belowCell))
-                {
-                    cells.Add(belowCell);
-                }
+                Vector3Int rightCell = new Vector3Int(pos.x + 1, pos.y, pos.z);
+
+                cells.Add(rightCell);
             }
         }
 
