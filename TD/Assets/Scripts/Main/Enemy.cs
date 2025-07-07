@@ -82,6 +82,16 @@ public class Enemy : UnitBase
         return hit != null;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("HighGroundArea"))
+        {
+            Debug.Log($"{name}がHighGroundAreaに到着しました");
+
+            MOV = 0;
+        }
+    }
+
     // ユニットが死亡したときに呼ばれる処理
     protected override void Die()
     {

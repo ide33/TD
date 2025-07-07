@@ -29,11 +29,6 @@ public class AreaTilemap : MonoBehaviour
             {
                 // 元の1マス分登録
                 cells.Add(pos);
-
-                // もし2マスタイルなら、隣も登録
-                Vector3Int rightCell = new Vector3Int(pos.x + 1, pos.y, pos.z);
-
-                cells.Add(rightCell);
             }
         }
 
