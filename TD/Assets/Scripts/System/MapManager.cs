@@ -62,8 +62,6 @@ public class MapManager : MonoBehaviour
                 Debug.Log($"Registered cell {cell} as {areaTM.areaType}");
             }
         }
-
-        Debug.Log("areaMap 初期化完了: " + areaMap.Count + "セル");
     }
 
     public bool CanPlaceUnit(Vector3Int cell, UnitType unitType)

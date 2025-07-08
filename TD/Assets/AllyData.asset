@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc857a55eb3190747a18417216600648, type: 3}
   m_Name: AllyData
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: "\u30A2\u30EB\u30C8\u30EA\u30A2\u30FB\u30DA\u30F3\u30C9\u30E9\u30B4\u30F3"
   maxHP: 100
-  STR: 30
-  DEF: 0
+  STR: 40
+  DEF: 10
   INT: 0
   RES: 0
   attackType: 0

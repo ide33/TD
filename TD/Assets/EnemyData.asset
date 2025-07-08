@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: 
   maxHP: 100
-  STR: 30
+  STR: 20
   DEF: 0
   INT: 0
   RES: 0
