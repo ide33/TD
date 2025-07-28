@@ -7,5 +7,11 @@ public class MagicAttack : IAttackStrategy
         // 魔法攻撃力から魔法防御力を引きダメージを与える
         int damage = Mathf.Max(1, attacker.INT - target.RES);
         target.TakeDamage(damage);
+
+        // attakerがAllyだったらSP加算
+        if (attacker is Ally ally)
+        {
+            SkillManager.Instance.AddSP(ally);
+        }
     }
 }

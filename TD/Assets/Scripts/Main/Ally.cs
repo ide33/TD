@@ -13,6 +13,8 @@ public class Ally : UnitBase
     // 最新の状態
     private IAllyUnit currentState;
 
+    // private SPUI spUI;
+
     // 攻撃方法
     public IAttackStrategy attackStrategy;
 
@@ -20,6 +22,22 @@ public class Ally : UnitBase
     public int BLK { get; private set; }
     public float SP { get; private set; }
     public float attackRange { get; private set; }
+
+    public void SetSP(float value)
+    {
+        SP = Mathf.Min(value, SkillManager.Instance.MaxSP);
+
+        // UI反映
+        // spUI?.SetSP(SP);
+    }
+
+    // public void SetSPUI(SPUI ui)
+    // {
+    //     spUI = ui;
+
+    //     // 初期値反映
+    //     // ui.SetSP(SP);
+    // }
 
     // 攻撃位置
     public Transform AttackPoint
@@ -55,6 +73,9 @@ public class Ally : UnitBase
                 attackStrategy = new MagicAttack();
                 break;
         }
+
+        // SkillManagerに登録
+        SkillManager.Instance.RegisterAlly(this);
 
         // HP初期化
         base.Start();
