@@ -14,6 +14,8 @@ public class DragManager : MonoBehaviour
 
     public Tilemap tilemap;
 
+    // [SerializeField] private GameObject spUIPrefab;
+
     private void Awake()
     {
         // 自分自身をInstanceに登録
@@ -113,6 +115,19 @@ public class DragManager : MonoBehaviour
             Debug.Log("ユニット配置不可");
             return false;
         }
+
+        // // ユニットを生成
+        // GameObject unitGO = Instantiate(draggingData.unitprefab, position, Quaternion.identity);
+        // Ally ally = unitGO.GetComponent<Ally>();
+
+        // if (ally != null)
+        // {
+        //     // UIをユニットに追従させて生成
+        //     GameObject uiGO = Instantiate(spUIPrefab);
+        //     SPUI spui = uiGO.GetComponent<SPUI>();
+        //     spui.Initialize(ally.transform, SkillManager.Instance.MaxSP);
+        //     ally.SetSPUI(SPUI);
+        // }
 
         // 実体を配置
         Instantiate(draggingData.unitprefab, position, Quaternion.identity);
