@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 public class Enemy : UnitBase
 {
     // キャラデータの取得
-    [SerializeField] private EnemyData data;
+    // [SerializeField] private UnitStats enemyStats;
 
     // 攻撃位置
     [SerializeField] private Transform attackPoint;
@@ -14,40 +14,37 @@ public class Enemy : UnitBase
 
     // 最新の状態
     private IEnemyUnit currentState;
+    public Transform AttackPoint => attackPoint;
 
-    // Enemy固有ステータス
-    public int WGT { get; private set;}
-    public float MOV { get; private set;}
-    public float attackRange { get; private set;}
-
-
-    // 攻撃位置
-    public Transform AttackPoint
-    { get { return attackPoint; } }
+    // 実行時ステータス
+    public float CurrentMoveSpeed { get; private set; }
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
-    public Tilemap tilemap;
 
+    public Tilemap tilemap;
     public Vector3Int spawnCell;
     public Vector3Int goalCell;
 
     public override void Start()
     {
         // ステータスの初期化
-        maxHP = data.maxHP;
-        STR = data.STR;
-        DEF = data.DEF;
-        INT = data.INT;
-        RES = data.RES;
-        WGT = data.WGT;
-        MOV = data.MOV;
-        attackRange = data.attackRange;
+        // stats = enemyStats;
+        CurrentMoveSpeed = stats.MOV;
 
         // HP初期化
         base.Start();
 
         // 最初は移動状態
         ChangeState(new EnemyMoveState());
+    }
+
+    private void Update()
+    {
+        // 現在の状態がnullでなければUpdateを呼ぶ
+        if (currentState != null)
+        {
+            currentState.UpdateState(this);
+        }
     }
 
     public void ChangeState(IEnemyUnit newState)
@@ -68,21 +65,24 @@ public class Enemy : UnitBase
         }
     }
 
-    private void Update()
+    public void SetMoveSpeed(float value)
     {
-        // 現在の状態がnullでなければUpdateを呼ぶ
-        if (currentState != null)
-        {
-            currentState.UpdateState(this);
-        }
+        CurrentMoveSpeed = Mathf.Max(0, value);
+    }
+
+    public void ResetMoveSpeed()
+    {
+        CurrentMoveSpeed = stats.MOV;
     }
 
     public bool IsAllyInRange()
     {
         // Enemyの敵が範囲内にいるか調べる
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Ally"));
-
-        return hit != null;
+        return Physics2D.OverlapCircle(
+            transform.position,
+            AttackRange,
+            LayerMask.GetMask("Ally")
+        ) != null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,8 +90,7 @@ public class Enemy : UnitBase
         if (collision.CompareTag("HighGroundArea"))
         {
             Debug.Log($"{name}がHighGroundAreaに到着しました");
-
-            MOV = 0;
+            SetMoveSpeed(0);
         }
     }
 

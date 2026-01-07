@@ -20,7 +20,7 @@ public class DeployableUnitData : ScriptableObject
     public int cost;
 
     // AllyDataのコストにアクセス
-    public AllyData allyData;
+    public UnitStats allyStats;
 
     public UnitType unitType;
 }

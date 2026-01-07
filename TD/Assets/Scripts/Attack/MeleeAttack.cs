@@ -9,10 +9,10 @@ public class MeleeAttack : IAttackStrategy
         int damage = Mathf.Max(1, attacker.STR - target.DEF);
         target.TakeDamage(damage);
 
-        // attakerがAllyだったらSP加算
-        if (attacker is Ally ally)
-        {
-            SkillManager.Instance.AddSP(ally);
-        }
+        // // attakerがAllyだったらSP加算
+        // if (attacker is Ally ally)
+        // {
+        //     SkillManager.Instance.AddSP(ally);
+        // }
     }
 }

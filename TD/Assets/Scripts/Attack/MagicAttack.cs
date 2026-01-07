@@ -8,10 +8,10 @@ public class MagicAttack : IAttackStrategy
         int damage = Mathf.Max(1, attacker.INT - target.RES);
         target.TakeDamage(damage);
 
-        // attakerがAllyだったらSP加算
-        if (attacker is Ally ally)
-        {
-            SkillManager.Instance.AddSP(ally);
-        }
+        // // attakerがAllyだったらSP加算
+        // if (attacker is Ally ally)
+        // {
+        //     SkillManager.Instance.AddSP(ally);
+        // }
     }
 }

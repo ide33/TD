@@ -34,33 +34,33 @@ public class SkillManager : MonoBehaviour
     }
 
     // SP加算処理
-    public void AddSP(Ally ally)
-    {
-        if (!allySPDict.ContainsKey(ally)) return;
+    // public void AddSP(Ally ally)
+    // {
+    //     if (!allySPDict.ContainsKey(ally)) return;
 
-        // maxSPを超えないように制限
-        float newSP = allySPDict[ally] + gainSP;
-        newSP = Mathf.Min(newSP, maxSP);
+    //     // maxSPを超えないように制限
+    //     float newSP = allySPDict[ally] + gainSP;
+    //     newSP = Mathf.Min(newSP, maxSP);
 
-        allySPDict[ally] = newSP;
-        ally.SetSP(newSP);
+    //     allySPDict[ally] = newSP;
+    //     ally.SetSP(newSP);
 
-        Debug.Log($"{ally.name} のSP：{allySPDict[ally]}");
-    }
+    //     Debug.Log($"{ally.name} のSP：{allySPDict[ally]}");
+    // }
 
     public bool CanUseSkill(Ally ally)
     {
         return allySPDict.ContainsKey(ally) && allySPDict[ally] >= maxSP;
     }
 
-    public void ResetSP(Ally ally)
-    {
-        if (allySPDict.ContainsKey(ally))
-        {
-            allySPDict[ally] = 0f;
-            ally.SetSP(0f);
-        }
-    }
+    // public void ResetSP(Ally ally)
+    // {
+    //     if (allySPDict.ContainsKey(ally))
+    //     {
+    //         allySPDict[ally] = 0f;
+    //         ally.SetSP(0f);
+    //     }
+    // }
 
     public float GetSP(Ally ally)
     {

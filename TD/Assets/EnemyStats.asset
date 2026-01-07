@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc857a55eb3190747a18417216600648, type: 3}
-  m_Name: AllyData
+  m_Script: {fileID: 11500000, guid: a836dff1c37dbb34188279d1dea469c2, type: 3}
+  m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  characterName: "\u30A2\u30EB\u30C8\u30EA\u30A2\u30FB\u30DA\u30F3\u30C9\u30E9\u30B4\u30F3"
-  maxHP: 100
-  STR: 40
+  maxHP: 50
+  STR: 20
   DEF: 10
   INT: 0
   RES: 0
   attackType: 0
+  attackRange: 0.3
+  MOV: 1
   BLK: 0
+  WGT: 1
   SP: 0
-  attackRange: 1.5

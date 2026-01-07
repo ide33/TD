@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AllyAttackState : IAllyUnit
 {
+    [SerializeField] private UnitStats allyStats;
+    
     // 攻撃のクールタイム
     private float attackCooldown = 1.0f;
 
@@ -25,7 +27,7 @@ public class AllyAttackState : IAllyUnit
         if (timer <= 0f)
         {
             // 範囲内の敵を検出
-            Collider2D hit = Physics2D.OverlapCircle(ally.AttackPoint.position, ally.attackRange, LayerMask.GetMask("Enemy"));
+            Collider2D hit = Physics2D.OverlapCircle(ally.AttackPoint.position, allyStats.attackRange, LayerMask.GetMask("Enemy"));
 
 
             if (hit != null)

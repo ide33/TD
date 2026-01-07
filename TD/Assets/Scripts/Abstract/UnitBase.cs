@@ -5,16 +5,26 @@ using System.Collections.Generic;
 public abstract class UnitBase : MonoBehaviour, IUnit
 {
     // 自分自身、継承先だけアクセス可能
-    [SerializeField] protected int maxHP = 100;
+    [Header("Stats")]
+    [SerializeField] protected UnitStats stats;
 
     // 継承先で参照可能、現在のHP
     protected int currentHP;
 
-    // ユニットデータ
-    public int STR;
-    public int DEF;
-    public int INT;
-    public int RES;
+    // // ユニットデータ
+    public int MaxHP => stats.maxHP;
+    public int CurrentHP => currentHP;
+    
+    public int STR => stats.STR;
+    public int DEF => stats.DEF;
+    public int INT => stats.INT;
+    public int RES => stats.RES;
+
+    public float MOV => stats.MOV;
+    public float AttackRange => stats.attackRange;
+    public int BLK => stats.BLK;
+    public int WGT => stats.WGT;
+    public float SP => stats.SP;
 
     public List<Vector3> movePath;
     public int currentPathIndex;
@@ -23,7 +33,7 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     // 継承先で上書き(override)可能
     public virtual void Start()
     {
-        currentHP = maxHP;
+        currentHP = stats.maxHP;
     }
 
     public virtual void TakeDamage(int damage)

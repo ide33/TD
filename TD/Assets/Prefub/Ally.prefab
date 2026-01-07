@@ -175,9 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e605ef700c3c324d808760e72d8c208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  STR: 0
-  DEF: 0
-  INT: 0
-  RES: 0
-  data: {fileID: 11400000, guid: 9eaeb1cfb148a8d48a38c2a20c828303, type: 2}
+  stats: {fileID: 11400000, guid: 4e6ec240f4a7f2946989293c04798cbd, type: 2}
+  movePath: []
+  currentPathIndex: 0
+  allyStats: {fileID: 11400000, guid: 4e6ec240f4a7f2946989293c04798cbd, type: 2}

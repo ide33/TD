@@ -33,7 +33,7 @@ public class EnemyMoveState : IEnemyUnit
         if (path == null || currentIndex >= path.Count) return;
 
         Vector3 target = path[currentIndex];
-        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target, enemy.MOV * Time.deltaTime);
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, target, enemy.CurrentMoveSpeed * Time.deltaTime);
 
         // 目標地点に近づいたら次へ
         if (Vector3.Distance(enemy.transform.position, target) < reachThreshold)

@@ -207,15 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb16a56b85d9daa4fa39748e5a8b1fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  STR: 0
-  DEF: 0
-  INT: 0
-  RES: 0
+  stats: {fileID: 11400000, guid: 319efd0070b75ae439f94b4d5e75aac7, type: 2}
   movePath: []
   currentPathIndex: 0
-  data: {fileID: 11400000, guid: 9756f04a940e1d745841c4992a830dbe, type: 2}
   attackPoint: {fileID: 2235470909202637957}
+  routeAsset: {fileID: 11400000, guid: 4a283e5fa6210ea409765004e1b7cfb5, type: 2}
   tilemap: {fileID: 0}
   spawnCell: {x: 9, y: -1, z: 0}
   goalCell: {x: -10, y: -1, z: 0}

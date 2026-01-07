@@ -6,6 +6,8 @@ public class DragManager : MonoBehaviour
     // DragManagerのシングルトン
     public static DragManager Instance { get; private set; }
 
+    [SerializeField] private UnitStats allyStats;
+
     // ドラッグ中のゴーストオブジェクト
     private GameObject ghost;
 
@@ -69,14 +71,14 @@ public class DragManager : MonoBehaviour
                 bool CanDeploy = false;
 
                 // ユニットのタイプに応じた配置可否判定
-                switch (draggingData.allyData.attackType)
+                switch (draggingData.allyStats.attackType)
                 {
-                    case AllyData.AttackType.Melee:
+                    case UnitStats.AttackType.Melee:
                         CanDeploy = areaType == MapManager.AreaType.DeployArea;
                         break;
 
-                    case AllyData.AttackType.Ranged:
-                    case AllyData.AttackType.Magic:
+                    case UnitStats.AttackType.Ranged:
+                    case UnitStats.AttackType.Magic:
                         CanDeploy = areaType == MapManager.AreaType.HighGroundArea;
                         break;
                 }
