@@ -44,6 +44,7 @@ public class EnemyMoveState : IEnemyUnit
             if (currentIndex >= routePoints.Count)
             {
                 Debug.Log($"{enemy.name}がルートの終点に到達しました");
+                enemy.ReachGoal();
                 return;
             }
         }

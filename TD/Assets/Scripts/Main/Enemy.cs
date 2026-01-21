@@ -21,7 +21,6 @@ public class Enemy : UnitBase
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
 
-    // public Tilemap tilemap;
     public Vector3Int spawnCell;
     public Vector3Int goalCell;
 
@@ -92,6 +91,12 @@ public class Enemy : UnitBase
             Debug.Log($"{name}がHighGroundAreaに到着しました");
             SetMoveSpeed(0);
         }
+    }
+
+    public void ReachGoal()
+    {
+        GameManager.Instance.DamageBase(1);
+        Destroy(gameObject);
     }
 
     // ユニットが死亡したときに呼ばれる処理
