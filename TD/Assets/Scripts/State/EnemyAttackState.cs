@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnemyAttackState : IEnemyUnit
 {
-    [SerializeField] private UnitStats enemyStats;
-
     // 攻撃のクールダウン   
     private float attackCooldown = 1.5f; 
 
@@ -28,7 +26,7 @@ public class EnemyAttackState : IEnemyUnit
         if (timer <= 0f)
         {
             // 範囲内の敵を検出
-            Collider2D hit = Physics2D.OverlapCircle(enemy.AttackPoint.position, enemyStats.attackRange, LayerMask.GetMask("Ally"));
+            Collider2D hit = Physics2D.OverlapCircle(enemy.AttackPoint.position, enemy.AttackRange, LayerMask.GetMask("Ally"));
 
 
             if (hit != null)
