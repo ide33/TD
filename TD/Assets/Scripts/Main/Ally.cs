@@ -38,7 +38,7 @@ public class Ally : UnitBase
         }
 
         // SkillManagerに登録
-        SkillManager.Instance.RegisterAlly(this);
+        // SkillManager.Instance.RegisterAlly(this);
 
         // HP初期化
         base.Start();

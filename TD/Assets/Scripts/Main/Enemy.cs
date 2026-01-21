@@ -70,6 +70,11 @@ public class Enemy : UnitBase
         CurrentMoveSpeed = stats.MOV;
     }
 
+    public void SetRoute(EnemyRouteObject routeObject)
+    {
+        route = routeObject;
+    }
+
     public bool IsAllyInRange()
     {
         // Enemyの敵が範囲内にいるか調べる

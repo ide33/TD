@@ -10,6 +10,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.canSpawnEnemy())
+            return;
+
         timer += Time.deltaTime;
 
         if (timer >= spawnInterval)
@@ -22,8 +25,8 @@ public class EnemySpawner : MonoBehaviour
     public void Spawn()
     {
         Enemy enemy = Instantiate(enemyPrefab);
-        enemy.GetType()
-            .GetField("route", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-            ?.SetValue(enemy, routePrefab);
+        enemy.SetRoute(routePrefab);
+
+        GameManager.Instance.OnEnemySpawned();
     }
 }
