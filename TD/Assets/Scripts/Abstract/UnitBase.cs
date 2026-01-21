@@ -26,8 +26,8 @@ public abstract class UnitBase : MonoBehaviour, IUnit
     public int WGT => stats.WGT;
     public float SP => stats.SP;
 
-    public List<Vector3> movePath;
-    public int currentPathIndex;
+    // public List<Vector3> movePath;
+    // public int currentPathIndex;
 
 
     // 継承先で上書き(override)可能

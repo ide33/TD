@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Linq;
 
 public class Enemy : UnitBase
 {
@@ -16,18 +17,13 @@ public class Enemy : UnitBase
     private IEnemyUnit currentState;
     public Transform AttackPoint => attackPoint;
 
-    // 実行時ステータス
     public float CurrentMoveSpeed { get; private set; }
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
 
-    public Vector3Int spawnCell;
-    public Vector3Int goalCell;
-
     public override void Start()
     {
         // ステータスの初期化
-        // stats = enemyStats;
         CurrentMoveSpeed = stats.MOV;
 
         // HP初期化

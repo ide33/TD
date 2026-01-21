@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyPrefub;
-    [SerializeField] private EnemyRouteObject route;
+    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private EnemyRouteObject routePrefab;
     [SerializeField] private float spawnInterval = 2f;
 
     private float timer;
@@ -19,11 +19,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void Spawn()
+    public void Spawn()
     {
-        Enemy enemy = Instantiate(enemyPrefub);
-        
-        // ルート戦闘にスポーン
-        enemy.transform.position = route.RoutePoints[0].position;
+        Enemy enemy = Instantiate(enemyPrefab);
+        enemy.GetType()
+            .GetField("route", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            ?.SetValue(enemy, routePrefab);
     }
 }

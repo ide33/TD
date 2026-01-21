@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class EnemyMoveState : IEnemyUnit
 {
     private int currentIndex = 0;
-    private List<Transform> routePoints;
+    private Transform[] routePoints;
     private const float reachThreshold = 0.01f;
 
     public void EnterState(Enemy enemy)
     {
         Debug.Log($"{enemy.name}が移動状態に入った");
 
-        if (enemy.Route == null || enemy.Route.RoutePoints.Count == 0)
+        if (enemy.Route == null || enemy.Route.RoutePoints.Length == 0)
         {
             Debug.LogError($"{enemy.name}のルートが設定されていません！");
             return;
@@ -26,7 +26,7 @@ public class EnemyMoveState : IEnemyUnit
 
     public void UpdateState(Enemy enemy)
     {
-        if (routePoints == null || currentIndex >= routePoints.Count) return;
+        if (currentIndex >= routePoints.Length) return;
 
         Transform target = routePoints[currentIndex];
 
@@ -41,7 +41,7 @@ public class EnemyMoveState : IEnemyUnit
             currentIndex++;
 
             // 最後の地点に着いた
-            if (currentIndex >= routePoints.Count)
+            if (currentIndex >= routePoints.Length)
             {
                 Debug.Log($"{enemy.name}がルートの終点に到達しました");
                 enemy.ReachGoal();
