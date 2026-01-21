@@ -3,14 +3,14 @@ using UnityEngine.Tilemaps;
 
 public class Enemy : UnitBase
 {
-    // キャラデータの取得
-    // [SerializeField] private UnitStats enemyStats;
-
     // 攻撃位置
     [SerializeField] private Transform attackPoint;
 
     // ルートを取得
-    public EnemyRoute routeAsset;
+    [Header("Route")]
+    [SerializeField] private EnemyRouteObject route;
+
+    public EnemyRouteObject Route => route;
 
     // 最新の状態
     private IEnemyUnit currentState;
@@ -21,7 +21,7 @@ public class Enemy : UnitBase
 
     public Vector2 MoveDirection { get; private set; } = Vector2.left;
 
-    public Tilemap tilemap;
+    // public Tilemap tilemap;
     public Vector3Int spawnCell;
     public Vector3Int goalCell;
 

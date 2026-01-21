@@ -5,9 +5,6 @@ using UnityEngine.XR;
 
 public class Ally : UnitBase
 {
-    // キャラデータの取得
-    // [SerializeField] private UnitStats allyStats;
-
     [SerializeField, Tooltip("このユニットの配置コスト（AllyDataから取得）")]
 
     private IAllyUnit currentState;
