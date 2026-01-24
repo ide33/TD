@@ -9,14 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BaseUI baseUI;
     [SerializeField] private DefeatEnemyUI defeatEnemyUI;
 
+    [SerializeField] private WaveManager waveManager;
+
     // 自陣の耐久値
     public int baseHP = 10;
 
     // 出現予定の敵総数
     public int totalEnemies = 20;
-
-    // 生成した敵数
-    public int spawnedEnemies = 0;
 
     // 倒した敵総数
     public int defeatedEnemies = 0;
@@ -38,15 +37,10 @@ public class GameManager : MonoBehaviour
         defeatEnemyUI.UpdateDefeatEnemyCount(defeatedEnemies, totalEnemies);
     }
 
-    public bool canSpawnEnemy()
-    {
-        return spawnedEnemies < totalEnemies;
-    }
-
     public void OnEnemySpawned()
     {
-        spawnedEnemies++;
-        Debug.Log("敵が出現しました。現在の出現数: " + spawnedEnemies);
+        // 敵が出現したときの処理
+        Debug.Log("敵が出現しました。");
     }
 
     public void EnemyDefeated()
@@ -54,12 +48,6 @@ public class GameManager : MonoBehaviour
         // 撃破数をカウント
         defeatedEnemies++;
         defeatEnemyUI.UpdateDefeatEnemyCount(defeatedEnemies, totalEnemies);
-
-        if (defeatedEnemies >= totalEnemies)
-        {
-            // 勝ち
-            WinGame();
-        }
     }
 
     public void DamageBase(int damage)
@@ -68,13 +56,17 @@ public class GameManager : MonoBehaviour
         baseHP -= damage;
         baseHP = Mathf.Max(0, baseHP);
 
-        baseUI.UpdateBaseHP(baseHP, 10);
+        baseUI.UpdateBaseHP(baseHP, baseHP);
 
         if (baseHP <= 0)
         {
-            // 負け
             LoseGame();
         }
+    }
+
+    public void OnAllEnemiesCleared()
+    {
+        WinGame();
     }
 
     private void WinGame()

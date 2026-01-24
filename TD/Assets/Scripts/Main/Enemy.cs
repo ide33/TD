@@ -97,6 +97,8 @@ public class Enemy : UnitBase
     public void ReachGoal()
     {
         GameManager.Instance.DamageBase(1);
+        WaveManager.Instance.OnEnemyRemoved();
+
         Destroy(gameObject);
     }
 
@@ -105,11 +107,9 @@ public class Enemy : UnitBase
     {
         base.Die();
 
-        if (this is Enemy)
-        {
-            // 死亡時にカウント
-            GameManager.Instance.EnemyDefeated();
-        }
+        // 死亡時にカウント
+        GameManager.Instance.EnemyDefeated();
+        WaveManager.Instance.OnEnemyRemoved();
 
         // 死亡状態に切り替え
         // ChangeState(new EnemyDeadState());

@@ -10,7 +10,7 @@ public class AllyAttackState : IAllyUnit
 
     public void EnterState(Ally ally)
     {
-        Debug.Log("味方:攻撃状態に入りました");
+        Debug.Log($"{ally.name}:攻撃状態に入りました");
 
         // タイマーを攻撃クールダウンに初期化
         timer = attackCooldown;
@@ -30,7 +30,7 @@ public class AllyAttackState : IAllyUnit
 
             if (hit != null)
             {
-                Debug.Log("味方:攻撃開始");
+                Debug.Log($"{ally.name}:攻撃開始");
 
                 // 敵のUnitBaseを取得、ダメージを与える
                 UnitBase enemy = hit.GetComponent<UnitBase>();
@@ -53,6 +53,6 @@ public class AllyAttackState : IAllyUnit
 
     public void ExitState(Ally ally)
     {
-        Debug.Log("味方:攻撃状態を抜けます");
+        Debug.Log($"{ally.name}:攻撃状態を抜けます");
     }
 }

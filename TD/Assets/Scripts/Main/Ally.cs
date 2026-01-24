@@ -15,9 +15,6 @@ public class Ally : UnitBase
 
     public override void Start()
     {
-        // ステータスの初期化
-        // stats = allyStats;
-
         // キャラに応じて攻撃方法を変える
         switch (stats.attackType)
         {

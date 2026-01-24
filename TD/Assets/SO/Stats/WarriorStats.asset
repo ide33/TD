@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a836dff1c37dbb34188279d1dea469c2, type: 3}
   m_Name: WarriorStats
   m_EditorClassIdentifier: 
+  unitName: "\u30A2\u30EB\u30C8\u30EA\u30A2"
   maxHP: 100
   STR: 30
   DEF: 20

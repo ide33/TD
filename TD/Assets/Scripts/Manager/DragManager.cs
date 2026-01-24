@@ -6,8 +6,6 @@ public class DragManager : MonoBehaviour
     // DragManagerのシングルトン
     public static DragManager Instance { get; private set; }
 
-    [SerializeField] private UnitStats allyStats;
-
     // ドラッグ中のゴーストオブジェクト
     private GameObject ghost;
 

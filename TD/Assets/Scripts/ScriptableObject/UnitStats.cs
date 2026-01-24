@@ -4,6 +4,7 @@ using UnityEngine;
 public class UnitStats : ScriptableObject
 {
     [Header("Basic")]
+    public string unitName;
     public int maxHP;
 
     [Header("Status")]

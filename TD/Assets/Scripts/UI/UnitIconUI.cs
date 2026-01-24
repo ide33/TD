@@ -14,6 +14,26 @@ public class UnitIconUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         // Imageコンポーネントを取得、表示する画像をunitDataに設定
         image = GetComponent<Image>();
+
+        if (image == null)
+        {
+            Debug.LogError("Imageコンポーネントがありません", this);
+            return;
+        }
+
+        if (unitData == null)
+        {
+            Debug.LogError("unitData が設定されていません", this);
+            return;
+        }
+
+        if (unitData.icon == null)
+        {
+            Debug.LogError("unitData.icon が設定されていません", unitData);
+            return;
+        }
+
+
         image.sprite = unitData.icon;
     }
 
