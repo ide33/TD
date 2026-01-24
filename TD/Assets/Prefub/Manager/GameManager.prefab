@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb4f17385092d740ba9ab8c8e211e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseUI: {fileID: 201175910077008347, guid: 589cddd228e5d3a4ba8d225378754c93, type: 3}
+  defeatEnemyUI: {fileID: -5472469076235579800, guid: 9d6b0ff0af83481438b0c8cc7c274717, type: 3}
+  waveManager: {fileID: 6911820422548374116, guid: 8aa44d5f73860be40aaa073fa82bf132, type: 3}
   baseHP: 10
   totalEnemies: 20
-  spawnedEnemies: 0
   defeatedEnemies: 0
 --- !u!114 &5131683528287651143
 MonoBehaviour:

@@ -176,3 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: beb0c122701accf4997db57b9f32d777, type: 2}
+  rangedProjectilePrefab: {fileID: 0}
+  magicEffectPrefab: {fileID: 6011928720882208673, guid: c44e0fb7486675346b441a06315cbc8f, type: 3}

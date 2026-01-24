@@ -5,6 +5,10 @@ using UnityEngine.XR;
 
 public class Ally : UnitBase
 {
+    [Header("Attack Visual")]
+    [SerializeField] private GameObject rangedProjectilePrefab;
+    [SerializeField] private GameObject magicEffectPrefab;
+
     [SerializeField, Tooltip("このユニットの配置コスト（AllyDataから取得）")]
 
     private IAllyUnit currentState;
@@ -25,12 +29,12 @@ public class Ally : UnitBase
 
             // 遠距離
             case UnitStats.AttackType.Ranged:
-                attackStrategy = new RangedAttack();
+                attackStrategy = new RangedAttack(rangedProjectilePrefab);
                 break;
 
             // 魔法
             case UnitStats.AttackType.Magic:
-                attackStrategy = new MagicAttack();
+                attackStrategy = new MagicAttack(magicEffectPrefab);
                 break;
         }
 
