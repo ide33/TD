@@ -12,27 +12,29 @@ public class RangedAttack : IAttackStrategy
 
     public void Attack(UnitBase attacker, UnitBase target)
     {
-        if (projectilePrefab == null)
-        {
-            Debug.LogError("RangedAttack: projectilePrefab が設定されていません");
-            return;
-        }
-
-        // 攻撃力から防御力を引きダメージを与える
-        int damage = Mathf.Max(1, attacker.STR - target.DEF);
-        target.TakeDamage(damage);
+        // if (projectilePrefab == null)
+        // {
+        //     Debug.LogError("RangedAttack: projectilePrefab が設定されていません");
+        //     return;
+        // }
 
         GameObject proj = Object.Instantiate(projectilePrefab, attacker.transform.position, Quaternion.identity);
 
         // Visualize 初期化
         var visualize = proj.GetComponent<AttackVisualize>();
+
         if (visualize == null)
         {
             Debug.LogError("AttackVisualize が projectilePrefab に付いていません");
             return;
         }
 
-        visualize.Initialize(target.transform);
+        visualize.Initialize(target, () =>
+        {
+            // 攻撃力から防御力を引きダメージを与える
+            int damage = Mathf.Max(1, attacker.STR - target.DEF);
+            target.TakeDamage(damage);
+        });
 
         // // attakerがAllyだったらSP加算
         // if (attacker is Ally ally)
