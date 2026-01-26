@@ -8,6 +8,7 @@ TagManager:
   - DeployArea
   - HighGroundArea
   - NoneArea
+  - Start
   layers:
   - Default
   - TransparentFX

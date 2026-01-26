@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WaveManager waveManager;
 
+    [SerializeField] private GameObject gameClearPopupPrefab;
+    [SerializeField] private GameObject gameOverPopupPrefab;
+
+
     // 自陣の耐久値
     public int baseHP = 10;
 
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
         baseHP -= damage;
         baseHP = Mathf.Max(0, baseHP);
 
-        baseUI.UpdateBaseHP(baseHP, baseHP);
+        baseUI.UpdateBaseHP(baseHP, 10);
 
         if (baseHP <= 0)
         {
@@ -72,10 +76,12 @@ public class GameManager : MonoBehaviour
     private void WinGame()
     {
         Debug.Log("勝利！");
+        PopupManager.Instance.ShowGameClear();
     }
 
     private void LoseGame()
     {
         Debug.Log("敗北...");
+        PopupManager.Instance.ShowGameOver();
     }
 }

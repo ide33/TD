@@ -4,7 +4,6 @@ public class AttackVisualize : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
 
-    // private Transform target;
      private UnitBase target;
     private System.Action onHit;
 

@@ -13,12 +13,6 @@ public class MagicAttack : IAttackStrategy
 
     public void Attack(UnitBase attacker, UnitBase target)
     {
-        // if (projectilePrefab == null)
-        // {
-        //     Debug.LogError("MagicAttack: projectilePrefab が null です");
-        //     return;
-        // }
-
         GameObject proj = Object.Instantiate(projectilePrefab, attacker.transform.position, Quaternion.identity);
 
         // Visualize 初期化

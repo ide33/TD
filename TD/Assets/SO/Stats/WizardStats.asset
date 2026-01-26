@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHP: 100
   STR: 0
   DEF: 10
-  INT: 40
+  INT: 30
   RES: 0
   attackType: 2
   attackRange: 3

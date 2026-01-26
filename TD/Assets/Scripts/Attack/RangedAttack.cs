@@ -12,12 +12,6 @@ public class RangedAttack : IAttackStrategy
 
     public void Attack(UnitBase attacker, UnitBase target)
     {
-        // if (projectilePrefab == null)
-        // {
-        //     Debug.LogError("RangedAttack: projectilePrefab が設定されていません");
-        //     return;
-        // }
-
         GameObject proj = Object.Instantiate(projectilePrefab, attacker.transform.position, Quaternion.identity);
 
         // Visualize 初期化
