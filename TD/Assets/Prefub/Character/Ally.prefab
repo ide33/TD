@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7497731981583366491, guid: 4c07e8fd40c840e4cb5e376166ed5eee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -176,3 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 4e6ec240f4a7f2946989293c04798cbd, type: 2}
+  rangedProjectilePrefab: {fileID: 0}
+  magicEffectPrefab: {fileID: 0}

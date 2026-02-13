@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(LineRenderer))]
 public class RouteLineDrawer : MonoBehaviour
@@ -8,11 +9,23 @@ public class RouteLineDrawer : MonoBehaviour
     [SerializeField] private float lineWidth = 0.1f;
 
     private LineRenderer lineRenderer;
+    private Coroutine hideCoroutine;
 
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
+    }
+
+    public void ShowRoute(float displayTime)
+    {
         DrawRoute();
+        lineRenderer.enabled = true;
+
+        if (hideCoroutine != null)
+            StopCoroutine(hideCoroutine);
+
+        hideCoroutine = StartCoroutine(HideAfterTime(displayTime));
     }
 
     void DrawRoute()
@@ -30,5 +43,11 @@ public class RouteLineDrawer : MonoBehaviour
         {
             lineRenderer.SetPosition(i, points[i].position);
         }
+    }
+
+    IEnumerator HideAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        lineRenderer.enabled = false;
     }
 }

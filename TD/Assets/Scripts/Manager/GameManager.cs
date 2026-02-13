@@ -11,10 +11,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WaveManager waveManager;
 
-    [SerializeField] private GameObject gameClearPopupPrefab;
-    [SerializeField] private GameObject gameOverPopupPrefab;
-
-
     // 自陣の耐久値
     public int baseHP = 10;
 

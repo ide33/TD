@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
 
     public bool IsAllWavesFinished =>
         currentWaveIndex >= waves.Length && aliveEnemyCount <= 0;
-        
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,6 +41,10 @@ public class WaveManager : MonoBehaviour
 
         WaveData wave = waves[currentWaveIndex];
         Debug.Log($"Wave {currentWaveIndex + 1} 開始: 敵数 {wave.enemyCount}");
+
+        RouteLineDrawer drawer = wave.route.GetComponent<RouteLineDrawer>();
+        if (drawer != null)
+            drawer.ShowRoute(3f);
 
         for (int i = 0; i < wave.enemyCount; i++)
         {
