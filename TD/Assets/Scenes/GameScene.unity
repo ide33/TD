@@ -436,6 +436,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 8357433736049059132, guid: 9aec293bc01998f46a10a96830ddc3e9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357433736049059132, guid: 9aec293bc01998f46a10a96830ddc3e9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357433736049059132, guid: 9aec293bc01998f46a10a96830ddc3e9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -492,6 +504,30 @@ PrefabInstance:
     - target: {fileID: 2713506864190777410, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811343944350365288, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348768070195519466, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580986907412347075, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333038104186120072, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251256353072811542, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121221723910136110, guid: 2fa29bab47a3fe44e8637c3ac3e7535e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -910,6 +946,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302948956}
     m_Modifications:
+    - target: {fileID: 3034201269415624769, guid: c58fb021b7490374a9e2880b0e53dbfa, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034201269415624769, guid: c58fb021b7490374a9e2880b0e53dbfa, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034201269415624769, guid: c58fb021b7490374a9e2880b0e53dbfa, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3094398435560359826, guid: c58fb021b7490374a9e2880b0e53dbfa, type: 3}
       propertyPath: m_Name
       value: WizardIcon

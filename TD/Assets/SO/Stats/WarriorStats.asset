@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: "\u30A2\u30EB\u30C8\u30EA\u30A2"
   maxHP: 100
   STR: 30
-  DEF: 20
+  DEF: 30
   INT: 0
   RES: 0
   attackType: 0

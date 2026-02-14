@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70f55891b36bee4aa814acdb3f06be4, type: 3}
   m_Name: WizardUnit
   m_EditorClassIdentifier: 
-  unitName: Wizard
-  icon: {fileID: 3422849895820167655, guid: f430e066cbc5bc840a9ed84a07cf891f, type: 3}
+  icon: {fileID: 4279680216647600996, guid: d8ec6c220977a48449ad3f9579c023c1, type: 3}
   unitprefab: {fileID: 5828851116330724803, guid: 8ff29ce609ceb79478e573cf6ccfb64f, type: 3}
   ghostprefab: {fileID: 3296773989514394122, guid: 069befedca412f340be8c704725083ec, type: 3}
-  cost: 20
+  cost: 15
   allyStats: {fileID: 11400000, guid: beb0c122701accf4997db57b9f32d777, type: 2}
   unitType: 2
