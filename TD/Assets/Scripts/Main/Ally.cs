@@ -6,6 +6,7 @@ using UnityEngine.XR;
 public class Ally : UnitBase
 {
     [Header("Attack Visual")]
+    [SerializeField] private GameObject meleeHitEffectPrefab;
     [SerializeField] private GameObject rangedProjectilePrefab;
     [SerializeField] private GameObject magicEffectPrefab;
 
@@ -24,7 +25,7 @@ public class Ally : UnitBase
         {
             // 近接
             case UnitStats.AttackType.Melee:
-                attackStrategy = new MeleeAttack();
+                attackStrategy = new MeleeAttack(meleeHitEffectPrefab);
                 break;
 
             // 遠距離

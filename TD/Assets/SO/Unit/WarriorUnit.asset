@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c70f55891b36bee4aa814acdb3f06be4, type: 3}
-  m_Name: DeployableUnit
+  m_Name: WarriorUnit
   m_EditorClassIdentifier: 
   icon: {fileID: -3976058230904145737, guid: fc2ad20ae5adca84488d6a145e58f3af, type: 3}
   unitprefab: {fileID: 7528820620855853962, guid: 15ba5c6173a7a2f419c34ec091abb35e, type: 3}

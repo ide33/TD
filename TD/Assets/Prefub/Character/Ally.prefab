@@ -155,7 +155,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.32}
+    oldSize: {x: 0.875, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,5 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 4e6ec240f4a7f2946989293c04798cbd, type: 2}
+  meleeHitEffectPrefab: {fileID: 4604866129026929021, guid: da0f0a15c0b86bd448b41a22a78d488d, type: 3}
   rangedProjectilePrefab: {fileID: 0}
   magicEffectPrefab: {fileID: 0}

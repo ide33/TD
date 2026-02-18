@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a836dff1c37dbb34188279d1dea469c2, type: 3}
   m_Name: WizardStats
   m_EditorClassIdentifier: 
-  unitName: "\u30A6\u30A3\u30B6\u30FC\u30C9"
+  unitName: "\u30DE\u30FC\u30EA\u30F3"
   maxHP: 100
   STR: 0
   DEF: 10

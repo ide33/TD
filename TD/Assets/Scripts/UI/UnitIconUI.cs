@@ -1,18 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UnitIconUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // ユニットデータ
     public DeployableUnitData unitData;
 
-    // 画像
+    [SerializeField] private  TextMeshProUGUI costText;
+
     private Image image;
+
 
     private void Start()
     {
-        // Imageコンポーネントを取得、表示する画像をunitDataに設定
         image = GetComponent<Image>();
 
         if (image == null)
@@ -35,6 +36,11 @@ public class UnitIconUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 
         image.sprite = unitData.icon;
+
+        if (costText != null)
+        {
+            costText.text = unitData.cost.ToString();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
