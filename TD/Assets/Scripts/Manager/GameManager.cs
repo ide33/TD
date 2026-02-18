@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int baseHP = 10;
 
     // 出現予定の敵総数
-    public int totalEnemies = 20;
+    public int totalEnemies = 0;
 
     // 倒した敵総数
     public int defeatedEnemies = 0;
@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        totalEnemies = waveManager.TotalEnemyCount;
+        
         baseUI.UpdateBaseHP(baseHP, 10);
         defeatEnemyUI.UpdateDefeatEnemyCount(defeatedEnemies, totalEnemies);
     }

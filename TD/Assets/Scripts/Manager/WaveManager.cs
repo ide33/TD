@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -7,6 +8,9 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] private WaveData[] waves;
     [SerializeField] private EnemySpawner enemySpawner;
+
+    [SerializeField] private int totalEnemyCount;
+    public int TotalEnemyCount => totalEnemyCount;
 
     private int currentWaveIndex = 0;
     private int aliveEnemyCount = 0;
@@ -43,8 +47,13 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"Wave {currentWaveIndex + 1} 開始: 敵数 {wave.enemyCount}");
 
         RouteLineDrawer drawer = wave.route.GetComponent<RouteLineDrawer>();
+
+        float routeDisplayTime = 3f;
+
         if (drawer != null)
-            drawer.ShowRoute(3f);
+            drawer.ShowRoute(routeDisplayTime);
+
+        yield return DelaySystem.Instance.Wait(routeDisplayTime);
 
         for (int i = 0; i < wave.enemyCount; i++)
         {
