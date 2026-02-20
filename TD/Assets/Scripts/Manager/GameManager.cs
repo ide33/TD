@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     // 倒した敵総数
     public int defeatedEnemies = 0;
 
+    public bool IsGameFinished { get; private set; } = false;
+
     private void Awake()
     {
         // 自分自身をInstanceに登録
@@ -73,13 +75,30 @@ public class GameManager : MonoBehaviour
 
     private void WinGame()
     {
+        if (IsGameFinished) return;
+
+        IsGameFinished = true;
+
         Debug.Log("勝利！");
         PopupManager.Instance.ShowGameClear();
+
+        StopGame();
     }
 
     private void LoseGame()
     {
+        if (IsGameFinished) return;
+
+        IsGameFinished = true;
+
         Debug.Log("敗北...");
         PopupManager.Instance.ShowGameOver();
+
+        StopGame();
+    }
+
+    private void StopGame()
+    {
+        Time.timeScale = 0f;
     }
 }
