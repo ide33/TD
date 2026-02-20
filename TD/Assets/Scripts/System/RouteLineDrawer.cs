@@ -14,6 +14,12 @@ public class RouteLineDrawer : MonoBehaviour
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        
+        if (lineRenderer == null)
+        {
+            Debug.LogError("LineRenderer が付いていません！");
+        }
+
         lineRenderer.enabled = false;
     }
 
