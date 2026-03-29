@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70f55891b36bee4aa814acdb3f06be4, type: 3}
+  m_Name: WizardUnit
+  m_EditorClassIdentifier: 
+  icon: {fileID: 4279680216647600996, guid: d8ec6c220977a48449ad3f9579c023c1, type: 3}
+  unitprefab: {fileID: 5828851116330724803, guid: 8ff29ce609ceb79478e573cf6ccfb64f, type: 3}
+  ghostprefab: {fileID: 3296773989514394122, guid: 069befedca412f340be8c704725083ec, type: 3}
+  cost: 15
+  allyStats: {fileID: 11400000, guid: beb0c122701accf4997db57b9f32d777, type: 2}
+  unitType: 2

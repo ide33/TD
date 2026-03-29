@@ -8,6 +8,7 @@ TagManager:
   - DeployArea
   - HighGroundArea
   - NoneArea
+  - Start
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AttackEffect
+    uniqueID: 3457588275
     locked: 0
   m_RenderingLayers:
   - Default

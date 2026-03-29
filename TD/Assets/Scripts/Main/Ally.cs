@@ -5,77 +5,42 @@ using UnityEngine.XR;
 
 public class Ally : UnitBase
 {
-    // キャラデータの取得
-    [SerializeField] private AllyData data;
+    [Header("Attack Visual")]
+    [SerializeField] private GameObject meleeHitEffectPrefab;
+    [SerializeField] private GameObject rangedProjectilePrefab;
+    [SerializeField] private GameObject magicEffectPrefab;
 
     [SerializeField, Tooltip("このユニットの配置コスト（AllyDataから取得）")]
 
-    // 最新の状態
     private IAllyUnit currentState;
 
-    // private SPUI spUI;
-
-    // 攻撃方法
     public IAttackStrategy attackStrategy;
+    public Transform AttackPoint => transform;
 
-    // Ally固有ステータス
-    public int BLK { get; private set; }
-    public float SP { get; private set; }
-    public float attackRange { get; private set; }
-
-    public void SetSP(float value)
-    {
-        SP = Mathf.Min(value, SkillManager.Instance.MaxSP);
-
-        // UI反映
-        // spUI?.SetSP(SP);
-    }
-
-    // public void SetSPUI(SPUI ui)
-    // {
-    //     spUI = ui;
-
-    //     // 初期値反映
-    //     // ui.SetSP(SP);
-    // }
-
-    // 攻撃位置
-    public Transform AttackPoint
-    { get { return transform; } }
 
     public override void Start()
     {
-        // ステータスの初期化
-        maxHP = data.maxHP;
-        STR = data.STR;
-        DEF = data.DEF;
-        INT = data.INT;
-        RES = data.RES;
-        BLK = data.BLK;
-        SP = data.SP;
-        attackRange = data.attackRange;
-
         // キャラに応じて攻撃方法を変える
-        switch (data.attackType)
+        switch (stats.attackType)
         {
             // 近接
-            case AllyData.AttackType.Melee:
-                attackStrategy = new MeleeAttack();
+            case UnitStats.AttackType.Melee:
+                attackStrategy = new MeleeAttack(meleeHitEffectPrefab);
                 break;
 
             // 遠距離
-            case AllyData.AttackType.Ranged:
-                attackStrategy = new RangedAttack();
+            case UnitStats.AttackType.Ranged:
+                attackStrategy = new RangedAttack(rangedProjectilePrefab);
                 break;
 
             // 魔法
-            case AllyData.AttackType.Magic:
-                attackStrategy = new MagicAttack();
+            case UnitStats.AttackType.Magic:
+                attackStrategy = new MagicAttack(magicEffectPrefab);
                 break;
         }
 
         // SkillManagerに登録
-        SkillManager.Instance.RegisterAlly(this);
+        // SkillManager.Instance.RegisterAlly(this);
 
         // HP初期化
         base.Start();
@@ -114,8 +79,10 @@ public class Ally : UnitBase
     public bool IsEnemyInRange()
     {
         // Enemyの敵が範囲内にいるか調べる
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, LayerMask.GetMask("Enemy"));
-
-        return hit != null;
+        return Physics2D.OverlapCircle(
+           transform.position,
+           AttackRange,
+           LayerMask.GetMask("Enemy")
+       ) != null;
     }
 }

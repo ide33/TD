@@ -4,9 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Unit", menuName = "DeployableUnit")]
 public class DeployableUnitData : ScriptableObject
 {
-    // ユニットの名前
-    public string unitName;
-
     // ユニットのアイコン
     public Sprite icon;
 
@@ -20,7 +17,7 @@ public class DeployableUnitData : ScriptableObject
     public int cost;
 
     // AllyDataのコストにアクセス
-    public AllyData allyData;
+    public UnitStats allyStats;
 
     public UnitType unitType;
 }

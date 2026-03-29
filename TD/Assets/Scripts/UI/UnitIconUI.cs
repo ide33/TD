@@ -1,20 +1,46 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UnitIconUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // ユニットデータ
     public DeployableUnitData unitData;
 
-    // 画像
+    [SerializeField] private  TextMeshProUGUI costText;
+
     private Image image;
+
 
     private void Start()
     {
-        // Imageコンポーネントを取得、表示する画像をunitDataに設定
         image = GetComponent<Image>();
+
+        if (image == null)
+        {
+            Debug.LogError("Imageコンポーネントがありません", this);
+            return;
+        }
+
+        if (unitData == null)
+        {
+            Debug.LogError("unitData が設定されていません", this);
+            return;
+        }
+
+        if (unitData.icon == null)
+        {
+            Debug.LogError("unitData.icon が設定されていません", unitData);
+            return;
+        }
+
+
         image.sprite = unitData.icon;
+
+        if (costText != null)
+        {
+            costText.text = unitData.cost.ToString();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
